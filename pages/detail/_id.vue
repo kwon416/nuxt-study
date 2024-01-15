@@ -28,6 +28,33 @@ export default {
     const product = response.data
     return { product }
   },
+  head() {
+    return {
+      title: `Shopping Item Deatil - ${this.product.name}`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `이 상품은 ${this.product.name}입니다.`,
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: `상품 상세 페이지`,
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: `상품 상세 정보`,
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: 'http://picsum.photos/640/480/',
+        },
+      ],
+    }
+  },
   methods: {
     async addToCart() {
       await createCartItem(this.product)
