@@ -1,3 +1,5 @@
+const isProduction = process.env.NODE_ENV === 'production'
+
 export default {
   target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -44,14 +46,13 @@ export default {
 
   // Server Setup
   server: {
-    port: process.env.NODE_ENV === 'PRODUCTION' ? null : 5001,
+    port: isProduction ? null : 5001,
   },
 
   // evn config
   env: {
-    BASE_URL:
-      process.env.NODE_ENV === 'PRODUCTION'
-        ? 'https://my-json-server.typicode.com/kwon416/nuxt-study-api'
-        : 'http://localhost:3000',
+    BASE_URL: isProduction
+      ? 'https://my-json-server.typicode.com/kwon416/nuxt-study-api'
+      : 'http://localhost:3000',
   },
 }
